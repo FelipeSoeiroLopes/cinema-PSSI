@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Suporte a acentuação e símbolos -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Responsividade -->
+
+  <!-- Segurança de conteúdo e proteção contra MIME sniffing -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+  <!-- Não envia referrer para proteger URLs internas -->
+  <meta name="referrer" content="no-referrer" />
+
+  <!-- Impede o uso indevido de APIs como geolocalização, microfone e câmera -->
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+
+  <!-- Política de segurança de conteúdo (CSP) para mitigar XSS -->
+  <meta http-equiv="Content-Security-Policy"
+        content="
+          default-src 'self';
+          script-src   'self';
+          style-src    'self' 'unsafe-inline';
+          img-src      'self' data:;
+          font-src     'self' https://cdnjs.cloudflare.com;
+          connect-src  'self';
+          frame-ancestors 'none';
+        " />
+
+  <!-- Strict-Transport-Security (recomendado via servidor, mas mostrado aqui para conhecimento) -->
+  <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload" />
+
+  <title>Login | Cadastro</title>
+
+  <!-- Font Awesome com SRI (Subresource Integrity) para garantir integridade do arquivo -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXN+z2e6wqRMwZISFRT38N+5h1oIvNMoFJ+ZVQX9GV8I7m3cMoRZfppZ3iRzhx9Sxl6L80w=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
+  <!-- Estilos locais -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Container principal que envolve formulários de login, cadastro e recuperação -->
+  <div class="container" id="container">
+
+    <!-- Formulário de Cadastro -->
+    <div class="form-container sign-up">
+      <form id="register-form" autocomplete="off">
+        <h1>Criar Conta</h1>
+        <input type="text" placeholder="Nome" id="reg-name" required />
+        <input type="email" placeholder="Email" id="reg-email" required />
+        <input type="password" id="reg-password" placeholder="Senha" required />
+        <!-- A barra de força e os requisitos são adicionados dinamicamente via JS -->
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+    <!-- Formulário de Login -->
+    <div class="form-container sign-in">
+      <form id="login-form" autocomplete="off">
+        <h1>Entrar</h1>
+        <input type="email" placeholder="Email" id="login-email" required />
+        <input type="password" placeholder="Senha" id="login-password" required />
+        <a href="#" id="forgot-password-link">Esqueceu sua senha?</a>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <!-- Formulário de Recuperação de Senha -->
+    <div class="form-container forgot-password">
+      <form id="forgot-form" autocomplete="off">
+        <h1>Recupere sua senha</h1>
+
+        <!-- Etapa 1: Inserção do email -->
+        <input type="email" placeholder="Seu email" id="forgot-email" required />
+
+        <!-- Etapa 2: Token enviado ao email (aparece apenas após verificação do email) -->
+        <!-- Campo de token será inserido dinamicamente via JS com id="token-input" -->
+
+        <!-- Etapa 3: Redefinição de senha -->
+        <input type="password" placeholder="Nova senha" id="new-password" style="display:none;" />
+        <input type="password" placeholder="Confirme a senha" id="confirm-password" style="display:none;" />
+
+        <!-- Botão de ação dinâmico -->
+        <button type="submit" id="forgot-submit">Validar Email</button>
+
+        <!-- Link de retorno ao login -->
+        <a href="#" id="back-to-login">Voltar ao login</a>
+      </form>
+    </div>
+
+    <!-- Painéis UI interativos -->
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Bem-vindo de volta!</h1>
+          <p>Entre com seus dados para continuar</p>
+          <button class="hidden" id="login">Entrar</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Olá, amigo!</h1>
+          <p>Registre-se para aproveitar nossos recursos</p>
+          <button class="hidden" id="register">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tela de boas-vindas após login -->
+  <div class="welcome-screen" id="welcome-screen" style="display: none;">
+    <h1>Bem-vindo(a)!</h1>
+    <p>Você entrou com sucesso.</p>
+    <a href="CINEMA/index.html">Ir para Cinema</a>
+  </div>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>
