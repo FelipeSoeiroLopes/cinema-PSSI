@@ -1,98 +1,90 @@
-# Sistema de Login, Cadastro e Acesso ao Cinema - Projeto Simulado
-
-**Código desenvolvido por:** Camila Santos, Felipe Lopes, Victor Guimarães, Lucas Koiti e Kauã da Silveira
-
----
-
-Este projeto é uma simulação de um sistema de autenticação completo, com **login**, **cadastro** e **recuperação de senha**, desenvolvido em **HTML5, CSS3 e JavaScript puro**. Após o login, o usuário é redirecionado para uma área exclusiva de filmes (pasta `CINEMA/`), que já está **integrada com a API pública do TMDB** (The Movie Database), permitindo a busca e exibição de sinopse de filmes reais em tempo real.
-
-O objetivo é demonstrar boas práticas de segurança no frontend e servir como base para futuras integrações com backend real, banco de dados e outras APIs externas.
-
----
-
-## ✅ Funcionalidades Implementadas
-
-- Tela de **cadastro** com validação de senha forte e feedback visual
-- Tela de **login** com verificação de credenciais
-- Sistema de **recuperação de senha** com token temporário, expiração e uso único
-- Feedback visual da **força da senha** e requisitos dinâmicos
-- Alternância suave entre login, cadastro e recuperação
-- Visualização de senha (olhinho) no campo de cadastro
-- Armazenamento simulado com `localStorage` e `cookies` (apenas para fins didáticos)
-- **Redirecionamento automático para a área de filmes** (`CINEMA/index.html`) após login bem-sucedido
-- **Página de filmes integrada à API TMDB**: busca, exibição de pôster, título, nota e sinopse dos filmes em português
-- Busca dinâmica de filmes por nome, consumindo dados reais da API
+<div align="center">
+  <h1>🎬 Sistema de Cinema PSSI</h1>
+  <p><strong>Login • Cadastro • Streaming de Filmes</strong></p>
+  
+  <p>
+    <img src="https://img.shields.io/badge/Projeto-Acadêmico-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Status-Finalizado-2ECC71?style=for-the-badge&logo=check-circle&logoColor=white"/>
+  </p>
+  
+  <p>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+  </p>
+  
+  <p>
+    <img src="https://img.shields.io/badge/API-TMDB-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Responsivo-100%25-27AE60?style=for-the-badge&logo=bootstrap&logoColor=white"/>
+  </p>
+</div>
 
 ---
 
-## 🔐 Medidas de Segurança Implementadas
+<p align="center">
+  <a href="https://github.com/FelipeSoeiroLopes/cinema-PSSI" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-Repositório-181717?logo=github&style=for-the-badge&logoColor=white" alt="GitHub"/>
+  </a>
+</p>
 
-> ⚠️ **Este é um projeto educacional e de simulação. Não utilize em produção sem adaptações!**
+<p align="center">
+  <a href="https://felipesoeirolopes.github.io/cinema-PSSI/" target="_blank">
+    <img src="https://img.shields.io/badge/Site%20Online-Acesse%20aqui-27ae60?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Site Online"/>
+  </a>
+</p>
 
-- **Saneamento de entradas do usuário**: Todos os dados digitados são tratados para evitar ataques XSS (Cross-Site Scripting), utilizando `textContent` para escapar valores.
-- **Validação forte de senha**: O cadastro e a redefinição exigem senha com no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo. O usuário recebe feedback visual dos requisitos atendidos.
-- **Token de recuperação de senha seguro**:
-  - Geração de token aleatório de 6 dígitos
-  - Token expira em 5 minutos
-  - Token só pode ser usado uma vez
-  - O campo de nova senha só aparece após validação do token
-- **Bloqueio de múltiplos usos de token**: O token é invalidado após o uso ou expiração, impedindo tentativas de reutilização.
-- **Uso de cookies seguros**: Cookies são definidos com as flags `Secure` e `SameSite=Lax` para evitar vazamento de informações em conexões inseguras e ataques CSRF. Apenas informações não sensíveis (como email e status de login) são armazenadas em cookies.
-- **Separação clara de etapas**: O fluxo de recuperação de senha é dividido em etapas, evitando que o usuário pule etapas ou abuse do sistema.
-- **Feedbacks claros ao usuário**: Mensagens de erro e sucesso são exibidas em cada etapa, orientando o usuário e dificultando tentativas de engenharia social.
-- **Visualização de senha**: O campo de senha do cadastro possui um ícone de olhinho para facilitar a digitação, sem comprometer a segurança.
-- **Armazenamento local apenas para simulação**: Todos os dados são salvos em `localStorage` apenas para fins didáticos. Não há armazenamento de senhas em texto puro em produção.
-- **Acesso protegido à área de filmes**: O acesso à pasta `CINEMA/` só é liberado após autenticação, simulando um ambiente restrito para usuários logados.
-- **Estrutura modular e fácil de adaptar**: O código está organizado para facilitar futuras integrações com autenticação real, APIs e banco de dados.
+## 👥 Desenvolvedores
 
----
+- Camila Santos
+- Felipe Lopes
+- Victor Guimarães
+- Lucas Koiti
+- Kauã da Silveira
 
-## ⚠️ Observações Importantes
+## 📚 Sobre o Projeto
 
-- **Não utiliza backend real**: Todos os dados são armazenados localmente via `localStorage` (simulação).
-- **Não use em produção sem adaptações**: Para uso real, implemente:
-  - Armazenamento seguro das senhas (hashing e criptografia)
-  - Autenticação com JWT ou sessões
-  - Integração com banco de dados e APIs reais
-  - Backend seguro para envio de e-mails e gerenciamento de tokens
-  - Controle real de acesso à área de filmes
+Sistema completo de autenticação e streaming de filmes, desenvolvido em **HTML5, CSS3 e JavaScript puro**. Integrado com a **API TMDB** para exibição de filmes reais em tempo real, com sistema de busca e visualização de sinopses.
 
----
+### 🌟 Funcionalidades Principais
 
-## 📁 Estrutura do Projeto
-
+#### 🔐 Sistema de Autenticação
 ```
-📆 raiz/
-├── index.html
-├── style.css
-├── script.js
-├── readme.md
-└── CINEMA/
-    ├── index.html (página protegida após login)
-    ├── style.css
-    └── script.js
+┌─────────────────────────────────┐
+│ ✓ Login Seguro                  │
+│ ✓ Cadastro com Validação        │
+│ ✓ Recuperação de Senha          │
+│ ✓ Token Temporário              │
+└─────────────────────────────────┘
 ```
 
+#### 🎥 Área de Filmes
+```
+┌─────────────────────────────────┐
+│ ✓ Busca em Tempo Real          │
+│ ✓ Pôsteres e Sinopses          │
+│ ✓ Notas e Avaliações           │
+│ ✓ Interface Responsiva         │
+└─────────────────────────────────┘
+```
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+- ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) Estruturação
+- ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) Estilização
+- ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) Lógica
+
+### API e Integrações
+- ![TMDB](https://img.shields.io/badge/-TMDB%20API-01B4E4?style=flat-square&logo=themoviedatabase&logoColor=white) Database de Filmes
+
+## 📊 Status do Projeto
+
+![Status](https://img.shields.io/badge/Status-Finalizado-2ECC71?style=for-the-badge&logo=check-circle&logoColor=white)
+![Última Atualização](https://img.shields.io/badge/Última%20Atualização-25%20Maio%202025-blue?style=for-the-badge&logo=calendar&logoColor=white)
+![Versão](https://img.shields.io/badge/Versão-1.0.0-purple?style=for-the-badge&logo=git&logoColor=white)
+
 ---
 
-## 💡 Futuras Melhorias
-
-- Integração com backend (Node.js/Express ou outro)
-- Uso de JWT para autenticação
-- Conexão com banco de dados (MongoDB, PostgreSQL, etc)
-- Criptografia de senhas com bcrypt
-- Gerenciamento de sessões e tokens expiráveis
-- Integração com outras APIs de filmes (ex: OMDB)
-- Envio real de e-mails para recuperação de senha
-- Controle de acesso real à área de filmes
-- Personalização do perfil do usuário
-- Favoritos e avaliações de filmes
-
----
-
-## 🛠️ Tecnologias Usadas
-
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- Integração com API TMDB (The Movie Database)
+<div align="center">
+  <sub>Desenvolvido com ❤️ para fins acadêmicos — 2025</sub>
+</div>
